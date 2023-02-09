@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
-import {Box, Input, Text, FormControl, Button, ButtonGroup} from '@chakra-ui/react'
+import {Box, Input, Text, FormControl, Button, ButtonGroup, Alert, FormErrorMessage} from '@chakra-ui/react'
 import './App.css'
 import data from '.././src/data/users.json'
 
@@ -12,8 +12,10 @@ function App() {
       return  e.pass=== optionUser.password && e.mail === optionUser.user
     })
      if (!currenUser){
-      
       console.log(currenUser)
+      alert("El Email o Contraseña son invalidos.") 
+     }else if (currenUser){
+      
      }
   };  
   
@@ -25,11 +27,14 @@ function App() {
    <Box> 
     <Box>
       <Text>Ingrese su Mail:</Text>
-      <Input type='email' value={optionUser.user} onChange={(e) => setOptionUser({...optionUser, user:e.target.value})}></Input>  
+      <Input placeholder='Ingrese su mail aqui' type='email' value={optionUser.user} onChange={(e) => setOptionUser({...optionUser, user:e.target.value})}></Input>  
     </Box>
     <Box>
       <Text>Ingrese su Contraseña:</Text>
-    <Input type='password' value={optionUser.password} onChange={(e) => setOptionUser({...optionUser, password:e.target.value})}></Input>
+    <Input placeholder='Ingrese su constraseña aqui' type='password' value={optionUser.password} onChange={(e) => setOptionUser({...optionUser, password:e.target.value})}></Input>
+    </Box>
+    <Box>
+
     </Box>
     <Box>
     <Button
